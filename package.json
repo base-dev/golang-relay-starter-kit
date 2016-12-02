@@ -2,7 +2,7 @@
   "name": "golang-relay-starter-kit",
   "private": true,
   "description": "A quick way to get up and running with Relay on Golang",
-  "repository": "github.com/sogko/golang-relay-starter-kit",
+  "repository": "github.com/base-dev/golang-relay-starter-kit",
   "version": "0.1.0",
   "scripts": {
     "start": "go run graphql.go & babel-node ./server.js",

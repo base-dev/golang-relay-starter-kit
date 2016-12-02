@@ -53,7 +53,7 @@ For e.g
 ```go
 import (
   ...
-  "github.com/sogko/golang-relay-starter-kit/data" // <--- update to package containing schema
+  "github.com/base-dev/golang-relay-starter-kit/data" // <--- update to package containing schema
 )
 ```
 
