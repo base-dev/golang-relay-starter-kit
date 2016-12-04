@@ -44,6 +44,13 @@ func GetWidget(id string) *Widget {
 func GetWidgets() []*Widget {
 	return widgets
 }
+func AddWidget(name string) *Widget {
+	id := len(widgets)
+	w := &Widget{string(id), name}
+	widgets = append(widgets, w)
+	return w
+}
+
 func WidgetsToInterfaceSlice(widgets ...*Widget) []interface{} {
 	var interfaceSlice []interface{} = make([]interface{}, len(widgets))
 	for i, d := range widgets {

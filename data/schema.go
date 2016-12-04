@@ -110,12 +110,23 @@ func init() {
 	 * This is the type that will be the root of our mutations,
 	 * and the entry point into performing writes in our schema.
 	 */
-	//	mutationType := graphql.NewObject(graphql.ObjectConfig{
-	//		Name: "Mutation",
-	//		Fields: graphql.Fields{
-	//			// Add you own mutations here
-	//		},
-	//	})
+	mutationType := graphql.NewObject(graphql.ObjectConfig{
+		Name: "Mutation",
+		Fields: graphql.Fields{
+			"addWidget": &graphql.Field{
+				Type: widgetType,
+				Args: graphql.FieldConfigArgument{
+					"name": &graphql.ArgumentConfig{
+						Type: graphql.String,
+					},
+				},
+				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+					name := p.Args["name"].(string)
+					return AddWidget(name), nil
+				},
+			},
+		},
+	})
 
 	/**
 	* Finally, we construct our schema (whose starting query type is the query
@@ -123,7 +134,8 @@ func init() {
 	 */
 	var err error
 	Schema, err = graphql.NewSchema(graphql.SchemaConfig{
-		Query: queryType,
+		Query:    queryType,
+		Mutation: mutationType,
 	})
 	if err != nil {
 		panic(err)
